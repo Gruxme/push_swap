@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 15:15:44 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/17 20:41:41 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/18 17:18:27 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,21 @@ int	ops_checker(t_stack **a)
 			&& ft_strcmp(line, "rr") && ft_strcmp(line, "rrr")
 			&& ft_strcmp(line, "ss"))
 		{
+			free(line);
+			line = NULL;
 			ft_putstr_fd("error\n", 1);
 			return (0);
 		}
 		else
 			do_operation(line, a, &b);
+		free(line);
+		line = NULL;
+	}
+	free(line);
+	if (b != NULL)
+	{
+		clear_stack(&b);
+		return (2);
 	}
 	return (1);
 }
@@ -127,6 +137,7 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	int		i;
 	int		tmp;
+	int		ret;
 
 	if (argc < 2)
 	{
@@ -163,15 +174,17 @@ int	main(int argc, char **argv)
 		printf("Error\n");
 		return (255);
 	}
-	if (!ops_checker(&a))
+	ret = ops_checker(&a);
+	if (!ret)
 	{
 		ft_putstr_fd("Error\n", 1);
 		return (255);
 	}
-	// print_stack(a, &ft_putnbr);
-	if (!is_sorted(&a))
-		ft_putstr_fd("ko\n", 1);
+	if (!is_sorted(&a) || ret == 2)
+		ft_putstr_fd("KO\n", 1);
 	else
-		ft_putstr_fd("ok\n", 1);
+		ft_putstr_fd("OK\n", 1);
+	clear_stack(&a);
+	while (1);
 	return (0);
 }

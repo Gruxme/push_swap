@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abiari <abiari@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 14:11:53 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/10 15:54:40 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/18 17:18:33 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_stock(int fd, char *str)
 {
@@ -34,17 +35,17 @@ char	*ft_stock(int fd, char *str)
 		temp = str;
 		str = ft_strjoin(str, buff);
 		free(temp);
-		if (b_read == 0 || str[0] == '\0')
+		if (b_read == 0 || !ft_strchr(str, '\n'))
 			break ;
 	}
 	free(buff);
 	return (str);
 }
 
-int	exit_nonewline(char *line, char *str)
+int	exit_nonewline(char **line, char *str)
 {
-	line = ft_strdup(str);
-	if (!(line))
+	*line = ft_strdup(str);
+	if (!(*line))
 		return (-1);
 	free(str);
 	str = NULL;
@@ -63,7 +64,7 @@ int	get_next_line(int fd, char **line)
 	if ((str) == NULL)
 		return (0);
 	if (!(ft_strchr(str, '\n')))
-		return (exit_nonewline(*line, str));
+		return (exit_nonewline(line, str));
 	else
 	{
 		temp = str;

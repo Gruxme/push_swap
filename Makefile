@@ -6,13 +6,13 @@
 #    By: abiari <abiari@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/19 17:19:26 by abiari            #+#    #+#              #
-#    Updated: 2021/06/17 20:39:15 by abiari           ###   ########.fr        #
+#    Updated: 2021/06/18 17:20:54 by abiari           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g3
 
 SRC = push_swap.c stack_funcs.c stack_funcs2.c\
 swap_ops.c ft_putstr.c sort_three.c sort_four.c sort_five.c\

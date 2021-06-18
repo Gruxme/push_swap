@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 17:08:10 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/17 14:33:41 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/18 13:46:38 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	sort_more(t_stack **a)
 {
 	t_stack	*b;
 	t_stack	*tmp;
+	t_stack	*tmp_head;
 	int		min;
 	int		range;
 
@@ -32,6 +33,7 @@ void	sort_more(t_stack **a)
 	while (*a)
 	{
 		tmp = stack_dup(a);
+		tmp_head = tmp;
 		min += range;
 		while (tmp)
 		{
@@ -43,7 +45,7 @@ void	sort_more(t_stack **a)
 			}
 			tmp = tmp->next;
 		}
-		clear_stack(&tmp);
+		clear_stack(&tmp_head);
 	}
 	while (b)
 	{
@@ -51,4 +53,5 @@ void	sort_more(t_stack **a)
 		push(a, pop(&b));
 		ft_putstr("pa\n");
 	}
+	clear_stack(a);
 }

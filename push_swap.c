@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 11:50:07 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/17 20:42:51 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/18 13:48:46 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,14 @@ int	main(int argc, char **argv)
 		printf("dups found\n");
 		return (2);
 	}
-	// print_stack(a, &ft_putnbr);
-	// write(1, "\n", 1);
-	sort_more(&a);
-	// sort_five(&a);
-	// print_stack(a, &ft_putnbr);
-	// write(1, "\n", 1);
-	// sort_three(&a);
-	// print_stack(a, &ft_putnbr);
-	// write(1, "\n", 1);
+	if (argc == 4)
+		sort_three(&a);
+	else if (argc == 5)
+		sort_four(&a);
+	else if (argc == 6)
+		sort_five(&a);
+	else
+		sort_more(&a);
+	clear_stack(&a);
 	return (0);
 }
