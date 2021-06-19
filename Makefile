@@ -6,20 +6,20 @@
 #    By: abiari <abiari@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/19 17:19:26 by abiari            #+#    #+#              #
-#    Updated: 2021/06/18 17:20:54 by abiari           ###   ########.fr        #
+#    Updated: 2021/06/19 18:31:37 by abiari           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g3
+CFLAGS = -Wall -Werror -Wextra -g3 -fsanitize=address
 
 SRC = push_swap.c stack_funcs.c stack_funcs2.c\
 swap_ops.c ft_putstr.c sort_three.c sort_four.c sort_five.c\
 sort_more.c stack_utils.c
 
 SRC_BONUS = checker_bonus.c stack_funcs.c stack_funcs2.c swap_ops.c\
-stack_utils.c
+stack_utils.c checker_utils_bonus.c operations_bonus.c
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 11:50:07 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/18 13:48:46 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/19 19:08:11 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,48 @@ int	check_digit(char *arg)
 	return (1);
 }
 
+int	check_arg(char *arg)
+{
+	int	tmp;
+
+	if (!check_digit(arg))
+	{
+		ft_putstr("Error\n");
+		return (0);
+	}
+	if (strlen(arg) > 10)
+	{
+		printf("Error\n");
+		return (0);
+	}
+	else if (strlen(arg) == 10)
+	{
+		tmp = ft_atoi(arg + 1);
+		if (tmp > 147483647)
+		{
+			printf("Error\n");
+			return (0);
+		}
+	}
+	return (1);
+}
+
+void	sort(int argc, t_stack **a)
+{
+	if (argc == 4)
+		sort_three(a);
+	else if (argc == 5)
+		sort_four(a);
+	else if (argc == 6)
+		sort_five(a);
+	else
+		sort_more(a);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	int		i;
-	int		tmp;
 
 	if (argc < 2)
 	{
@@ -63,25 +100,8 @@ int	main(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		if (!check_digit(argv[i]))
-		{
-			ft_putstr("error: args not digit\n");
-			return (3);
-		}
-		if (strlen(argv[i]) > 10)
-		{
-			printf("error number overflow\n");
-			return (1);
-		}
-		else if (strlen(argv[i]) == 10)
-		{
-			tmp = ft_atoi(argv[i] + 1);
-			if (tmp > 147483647)
-			{
-				printf("error number overflow\n");
-				return (1);
-			}
-		}
+		if (!check_arg(argv[i]))
+			return (255);
 		stack_addback(&a, ft_atoi(argv[i]));
 		i++;
 	}
@@ -90,14 +110,7 @@ int	main(int argc, char **argv)
 		printf("dups found\n");
 		return (2);
 	}
-	if (argc == 4)
-		sort_three(&a);
-	else if (argc == 5)
-		sort_four(&a);
-	else if (argc == 6)
-		sort_five(&a);
-	else
-		sort_more(&a);
+	sort(argc, &a);
 	clear_stack(&a);
 	return (0);
 }

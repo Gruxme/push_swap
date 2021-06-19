@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:41:52 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/17 20:19:16 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/19 17:08:25 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,43 @@ int	find_max(t_stack **stack)
 	return (max);
 }
 
+void	move_to_top(t_data *data, t_stack **stack, int type)
+{
+	if (data->pos > data->middle)
+	{
+		while (data->pos < data->len + 1)
+		{
+			r_rotate(stack);
+			if (type == 0)
+				ft_putstr_fd("rra\n", 1);
+			else
+				ft_putstr_fd("rrb\n", 1);
+			(data->pos)++;
+		}
+	}
+	else
+	{
+		while (data->pos > 1)
+		{
+			rotate(stack);
+			if (type == 0)
+				ft_putstr_fd("ra\n", 1);
+			else
+				ft_putstr_fd("rb\n", 1);
+			(data->pos)--;
+		}
+	}
+}
+
 void	make_head(t_stack **stack, int new_head, int type)
 {
-	int	len;
-	int	pos;
+	t_data	data;
 
-	len = stack_len(stack);
-	pos = find_pos(stack, new_head);
-	if (pos == 1)
+	data.len = stack_len(stack);
+	data.pos = find_pos(stack, new_head);
+	if (data.pos == 1)
 		return ;
-	if (pos == 2)
+	if (data.pos == 2)
 	{
 		swap(stack);
 		if (type == 0)
@@ -62,58 +89,9 @@ void	make_head(t_stack **stack, int new_head, int type)
 			ft_putstr_fd("sb\n", 1);
 		return ;
 	}
-	if (len % 2 == 0)
-	{
-		if (pos > len / 2)
-		{
-			while (pos < len + 1)
-			{
-				r_rotate(stack);
-				if (type == 0)
-					ft_putstr_fd("rra\n", 1);
-				else
-					ft_putstr_fd("rrb\n", 1);
-				pos++;
-			}
-		}
-		else
-		{
-			while (pos > 1)
-			{
-				rotate(stack);
-				if (type == 0)
-					ft_putstr_fd("ra\n", 1);
-				else
-					ft_putstr_fd("rb\n", 1);
-				pos--;
-			}
-		}
-	}
+	if (data.len % 2 == 0)
+		data.middle = data.len / 2;
 	else
-	{
-		if (pos > (len / 2) + 1)
-		{
-			while (pos < len + 1)
-			{
-				r_rotate(stack);
-				if (type == 0)
-					ft_putstr_fd("rra\n", 1);
-				else
-					ft_putstr_fd("rrb\n", 1);
-				pos++;
-			}
-		}
-		else
-		{
-			while (pos > 1)
-			{
-				rotate(stack);
-				if (type == 0)
-					ft_putstr_fd("ra\n", 1);
-				else
-					ft_putstr_fd("rb\n", 1);
-				pos--;
-			}
-		}
-	}
+		data.middle = (data.len / 2) + 1;
+	move_to_top(&data, stack, type);
 }

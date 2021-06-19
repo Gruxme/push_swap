@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 15:15:53 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/17 20:03:57 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/19 18:23:49 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,12 @@ int		stack_len(t_stack **stack);
 int		find_pos(t_stack **stack, int num);
 void	make_head(t_stack **stack, int new_head, int type);
 t_stack	*stack_dup(t_stack **stack);
+void	do_operation(char *op, t_stack **a, t_stack **b);
+int		ops_checker(t_stack **a);
+int		is_sorted(t_stack **stack);
+void	rrr(t_stack **a, t_stack **b);
+void	rr(t_stack **a, t_stack **b);
+void	ss(t_stack **a, t_stack **b);
+int		check_valid_op(char *line);
 
 #endif

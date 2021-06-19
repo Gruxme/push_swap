@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 15:15:38 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/17 09:14:54 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/19 18:32:53 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ void	sort_five(t_stack **a)
 	ft_putstr("pa\n");
 	push(a, pop(&b));
 	ft_putstr("pa\n");
+	clear_stack(&b);
 }

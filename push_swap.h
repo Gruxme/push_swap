@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 09:59:20 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/17 20:03:44 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/19 17:06:46 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ typedef struct s_stack
 	int				num;
 	struct s_stack	*next;
 }				t_stack;
+
+typedef struct s_data
+{
+	int	len;
+	int	pos;
+	int	middle;
+}				t_data;
 
 int		peek(const t_stack *stack);
 void	clear_stack(t_stack **stack);
