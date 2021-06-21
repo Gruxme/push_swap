@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 awk -v loop=500 -v range=1000 'BEGIN{
   srand()
   do {

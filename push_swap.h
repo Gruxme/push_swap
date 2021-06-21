@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 09:59:20 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/19 17:06:46 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/21 16:01:27 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ void	make_head(t_stack **stack, int new_head, int type);
 t_stack	*stack_dup(t_stack **stack);
 void	sort_five(t_stack **a);
 void	sort_more(t_stack **a);
+int		is_sorted(t_stack **stack);
 #endif

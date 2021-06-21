@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 11:50:07 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/19 19:08:11 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/21 16:03:04 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,19 +97,20 @@ int	main(int argc, char **argv)
 		write(1, "\n", 1);
 		return (0);
 	}
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (++i < argc)
 	{
 		if (!check_arg(argv[i]))
 			return (255);
 		stack_addback(&a, ft_atoi(argv[i]));
-		i++;
 	}
 	if (check_dups(a))
 	{
-		printf("dups found\n");
-		return (2);
+		printf("Error\n");
+		return (255);
 	}
+	if (is_sorted(&a))
+		return (0);
 	sort(argc, &a);
 	clear_stack(&a);
 	return (0);

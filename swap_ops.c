@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 10:33:57 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/11 14:36:56 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/21 16:01:18 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,18 @@ void	r_rotate(t_stack **stack)
 	free(new_tail->next);
 	new_tail->next = NULL;
 	push(stack, tail);
+}
+
+int	is_sorted(t_stack **stack)
+{
+	t_stack	*tmp;
+
+	tmp = *stack;
+	while (tmp->next)
+	{
+		if (tmp->num > tmp->next->num)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
 }

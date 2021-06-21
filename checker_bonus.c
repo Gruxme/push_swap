@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 15:15:44 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/19 18:28:41 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/21 17:17:51 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,7 @@ int	check_arg(char *arg)
 int	check_ops_return(int ret, t_stack **a)
 {
 	if (!ret)
-	{
-		ft_putstr_fd("Error\n", 1);
 		return (255);
-	}
 	if (!is_sorted(a) || ret == 2)
 		ft_putstr_fd("KO\n", 1);
 	else
