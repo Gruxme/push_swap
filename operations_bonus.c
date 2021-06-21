@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 18:22:48 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/19 18:23:16 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/21 17:17:39 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ops_checker(t_stack **a)
 		{
 			free(line);
 			line = NULL;
-			ft_putstr_fd("error\n", 1);
+			ft_putstr_fd("Error\n", 1);
 			return (0);
 		}
 		else
@@ -63,20 +63,6 @@ int	ops_checker(t_stack **a)
 	{
 		clear_stack(&b);
 		return (2);
-	}
-	return (1);
-}
-
-int	is_sorted(t_stack **stack)
-{
-	t_stack	*tmp;
-
-	tmp = *stack;
-	while (tmp->next)
-	{
-		if (tmp->num > tmp->next->num)
-			return (0);
-		tmp = tmp->next;
 	}
 	return (1);
 }
