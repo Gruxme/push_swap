@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 11:50:07 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/21 16:03:04 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/21 17:43:23 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,15 @@ int	check_arg(char *arg)
 
 void	sort(int argc, t_stack **a)
 {
-	if (argc == 4)
+	if (argc == 3)
+	{
+		if ((*a)->num > (*a)->next->num)
+		{
+			swap(a);
+			ft_putstr_fd("sa\n", 1);
+		}
+	}
+	else if (argc == 4)
 		sort_three(a);
 	else if (argc == 5)
 		sort_four(a);
@@ -92,7 +100,7 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	int		i;
 
-	if (argc < 2)
+	if (argc < 3)
 	{
 		write(1, "\n", 1);
 		return (0);
