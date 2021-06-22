@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 11:50:07 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/22 10:12:43 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/22 11:36:09 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ int	main(int argc, char **argv)
 	}
 	if (check_dups(a))
 	{
-		printf("Error\n");
+		ft_putstr_fd("Error\n", 1);
 		return (255);
 	}
 	if (is_sorted(&a))
