@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 15:15:53 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/19 18:23:49 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/22 10:27:00 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ void	rrr(t_stack **a, t_stack **b);
 void	rr(t_stack **a, t_stack **b);
 void	ss(t_stack **a, t_stack **b);
 int		check_valid_op(char *line);
-
+void	push_a(t_stack **a, t_stack **b);
+void	push_b(t_stack **a, t_stack **b);
 #endif

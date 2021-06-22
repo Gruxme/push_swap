@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 11:50:07 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/21 17:43:23 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/22 10:12:43 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ int	check_digit(char *arg)
 	while (arg[i])
 	{
 		if (!ft_isdigit(arg[i]))
-			if (arg[i] != '-' || (arg[i] == '-' && i != 0)
-				|| ((arg[i] == '-' && i == 0
-						&& arg[i + 1] == '\0')))
+			if ((arg[i] != '-' || (arg[i] == '-' && i != 0)
+					|| (arg[i] == '-' && i == 0 && arg[i + 1] == '\0'))
+				&& (arg[i] != '+' || (arg[i] == '+' && i != 0)
+					|| (arg[i] == '+' && i == 0 && arg[i + 1] == '\0')))
 				return (0);
 		i++;
 	}
@@ -51,27 +52,25 @@ int	check_digit(char *arg)
 
 int	check_arg(char *arg)
 {
-	int	tmp;
+	int		tmp;
+	char	*num;
 
 	if (!check_digit(arg))
 	{
 		ft_putstr("Error\n");
 		return (0);
 	}
-	if (strlen(arg) > 10)
+	tmp = ft_atoi(arg);
+	num = ft_itoa(tmp);
+	if (arg[0] == '+')
+		arg++;
+	if (ft_strcmp(arg, num))
 	{
-		printf("Error\n");
+		ft_putstr_fd("Error", 1);
+		free(num);
 		return (0);
 	}
-	else if (strlen(arg) == 10)
-	{
-		tmp = ft_atoi(arg + 1);
-		if (tmp > 147483647)
-		{
-			printf("Error\n");
-			return (0);
-		}
-	}
+	free(num);
 	return (1);
 }
 
@@ -100,11 +99,8 @@ int	main(int argc, char **argv)
 	t_stack	*a;
 	int		i;
 
-	if (argc < 3)
-	{
-		write(1, "\n", 1);
+	if (argc < 2)
 		return (0);
-	}
 	i = 0;
 	while (++i < argc)
 	{

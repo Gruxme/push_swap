@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_five.c                                        :+:      :+:    :+:   */
+/*   stack_funcs3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/15 15:15:38 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/22 10:31:11 by abiari           ###   ########.fr       */
+/*   Created: 2021/06/22 10:22:24 by abiari            #+#    #+#             */
+/*   Updated: 2021/06/22 10:25:54 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_five(t_stack **a)
+void	push_a(t_stack **a, t_stack **b)
 {
-	t_stack	*b;
+	if (!(*b))
+		return ;
+	else
+		push(a, pop(b));
+}
 
-	make_head(a, find_min(a), 0);
-	push_b(a, &b);
-	ft_putstr("pb\n");
-	make_head(a, find_min(a), 0);
-	push_b(a, &b);
-	ft_putstr("pb\n");
-	sort_three(a);
-	if (b->num < b->next->num)
-	{
-		swap(&b);
-		ft_putstr("sb");
-	}
-	push_a(a, &b);
-	ft_putstr("pa\n");
-	push_a(a, &b);
-	ft_putstr("pa\n");
-	clear_stack(&b);
+void	push_b(t_stack **a, t_stack **b)
+{
+	if (!(*a))
+		return ;
+	else
+		push(b, pop(a));
 }

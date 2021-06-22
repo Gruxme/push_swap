@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 18:22:48 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/21 17:17:39 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/22 10:27:38 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	do_operation(char *op, t_stack **a, t_stack **b)
 {
 	if (!ft_strcmp(op, "pb"))
-		push(b, pop(a));
+		push_b(a, b);
 	else if (!ft_strcmp(op, "pa"))
-		push(a, pop(b));
+		push_a(a, b);
 	else if (!ft_strcmp(op, "sa"))
 		swap(a);
 	else if (!ft_strcmp(op, "sb"))

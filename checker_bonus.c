@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 15:15:44 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/21 17:17:51 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/22 10:14:47 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ int	check_digit(char *arg)
 	{
 		if (!ft_isdigit(arg[i]))
 			if (arg[i] != '-' || (arg[i] == '-' && i != 0)
-				|| ((arg[i] == '-' && i == 0
-						&& arg[i + 1] == '\0')))
+				|| ((arg[i] == '-' && i == 0 && arg[i + 1] == '\0'))
+				|| arg[i] != '+' || (arg[i] == '+' && i != 0)
+				|| ((arg[i] == '+' && i == 0 && arg[i + 1] == '\0')))
 				return (0);
 		i++;
 	}
@@ -51,27 +52,25 @@ int	check_digit(char *arg)
 
 int	check_arg(char *arg)
 {
-	int	tmp;
+	int		tmp;
+	char	*num;
 
 	if (!check_digit(arg))
 	{
 		ft_putstr_fd("Error\n", 1);
 		return (0);
 	}
-	if (strlen(arg) > 10)
+	tmp = ft_atoi(arg);
+	num = ft_itoa(tmp);
+	if (arg[0] == '+')
+		arg++;
+	if (ft_strcmp(arg, num))
 	{
-		printf("Error\n");
+		ft_putstr_fd("Error", 1);
+		free(num);
 		return (0);
 	}
-	else if (ft_strlen(arg) == 10)
-	{
-		tmp = ft_atoi(arg + 1);
-		if (tmp > 147483647)
-		{
-			printf("Error\n");
-			return (0);
-		}
-	}
+	free(num);
 	return (1);
 }
 
@@ -94,10 +93,7 @@ int	main(int argc, char **argv)
 	int		ret;
 
 	if (argc < 2)
-	{
-		write(1, "\n", 1);
-		return (255);
-	}
+		return (0);
 	i = 1;
 	while (i < argc)
 	{
@@ -112,5 +108,6 @@ int	main(int argc, char **argv)
 		return (255);
 	}
 	ret = ops_checker(&a);
+	print_stack(a, &ft_putnbr);
 	return (check_ops_return(ret, &a));
 }

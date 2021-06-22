@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 09:58:58 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/12 12:00:22 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/22 10:21:30 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ int	pop(t_stack **stack)
 	int		num;
 	t_stack	*next;
 
-	if (!(*stack))
-		return (INT32_MIN);
+	// if (!(*stack))
+	// 	return (INT32_MIN);
 	num = (*stack)->num;
 	next = (*stack)->next;
 	free(*stack);

@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 10:33:57 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/21 16:01:18 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/21 20:45:44 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	is_sorted(t_stack **stack)
 {
 	t_stack	*tmp;
 
+	if (!(*stack))
+		return (0);
 	tmp = *stack;
 	while (tmp->next)
 	{
