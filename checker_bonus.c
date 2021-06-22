@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 15:15:44 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/22 10:14:47 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/22 11:39:14 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ int	check_digit(char *arg)
 	while (arg[i])
 	{
 		if (!ft_isdigit(arg[i]))
-			if (arg[i] != '-' || (arg[i] == '-' && i != 0)
-				|| ((arg[i] == '-' && i == 0 && arg[i + 1] == '\0'))
-				|| arg[i] != '+' || (arg[i] == '+' && i != 0)
-				|| ((arg[i] == '+' && i == 0 && arg[i + 1] == '\0')))
+			if ((arg[i] != '-' || (arg[i] == '-' && i != 0)
+					|| (arg[i] == '-' && i == 0 && arg[i + 1] == '\0'))
+				&& (arg[i] != '+' || (arg[i] == '+' && i != 0)
+					|| (arg[i] == '+' && i == 0 && arg[i + 1] == '\0')))
 				return (0);
 		i++;
 	}
@@ -108,6 +108,5 @@ int	main(int argc, char **argv)
 		return (255);
 	}
 	ret = ops_checker(&a);
-	print_stack(a, &ft_putnbr);
 	return (check_ops_return(ret, &a));
 }
