@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/15 17:08:10 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/22 10:38:07 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/23 16:23:14 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	push_under_range_to_b(int *min, int range, t_stack **a, t_stack **b)
 	t_stack	*tmp_head;
 
 	tmp = NULL;
+	tmp_head = NULL;
 	while (*a)
 	{
 		tmp = stack_dup(a);
