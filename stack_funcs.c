@@ -6,18 +6,11 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 09:58:58 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/23 16:23:34 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/29 10:47:25 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	peek(const t_stack *stack)
-{
-	if (stack)
-		return (stack->num);
-	return (INT32_MIN);
-}
 
 void	push(t_stack **stack, int num)
 {

@@ -6,7 +6,7 @@
 /*   By: abiari <abiari@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 10:55:17 by abiari            #+#    #+#             */
-/*   Updated: 2021/06/17 09:58:40 by abiari           ###   ########.fr       */
+/*   Updated: 2021/06/29 10:48:12 by abiari           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	stack_len(t_stack **stack)
 	int		len;
 
 	len = 0;
-	if (!*stack)
+	if (!(*stack))
 		return (0);
 	tmp = *stack;
 	while (tmp)
@@ -54,8 +54,8 @@ int	find_pos(t_stack **stack, int num)
 	int		pos;
 	t_stack	*tmp;
 
-	if (!stack)
-		return (0);
+	if (!(*stack))
+		return (-1);
 	tmp = *stack;
 	pos = 1;
 	while (tmp)
@@ -73,6 +73,8 @@ t_stack	*stack_dup(t_stack **stack)
 	t_stack	*dup;
 	t_stack	*tmp;
 
+	if (!(*stack))
+		return (NULL);
 	tmp = *stack;
 	dup = NULL;
 	while (tmp)
